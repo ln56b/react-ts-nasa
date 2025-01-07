@@ -3,9 +3,8 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: white;
+  background-color: #030615;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,56 +12,100 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
+#root {
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  flex-direction: row;
   min-height: 100vh;
+  display: relative;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.img-container {
+  display: flex;
+  flex-direction: column;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.bg-img {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  object-fit: cover;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.bg-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(3, 6, 21, 0) 0%, #030615 100%);
+}
+
+.sidebar {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.sidebar-contents {
+  z-index: 15;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  overflow-y: scroll;
+  height: 100%;
+  width: 90%;
+  max-width: 800px;
+  margin-left: auto;
+  background: #030615;
+
+  div {
+    flex: 1;
   }
-  a:hover {
-    color: #747bff;
-  }
+
   button {
-    background-color: #f9f9f9;
+    background: transparent;
+    color: white;
+    border: none;
+    outline: none;
+    margin-right: auto;
+  }
+}
+
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: #030615;
+  opacity: 0.6;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    position: relative;
+    inset: unset;
+    min-width: 30%;
+    box-shadow: 0 0 40px 1px #030615;
+  }
+
+  .sidebar-contents {
+    margin: unset;
   }
 }
