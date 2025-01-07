@@ -43,9 +43,39 @@ footer {
   left: 0;
   width: 100%;
   display: flex;
-  align-items: center;
   gap: 1rem;
   justify-content: space-between;
+  padding: 1rem;
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 200;
+    }
+  }
+
+  button {
+    background: transparent;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 1rem;
+    transition-duration: 200;
+    cursor: pointer;
+    i {
+      font-size: 1.5rem;
+    }
+    :hover {
+      opacity: 0.7;
+    }
+  }
 }
 
 .bg-gradient {

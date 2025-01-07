@@ -1,7 +1,11 @@
-export default function Sidebar() {
+type SidebarProps = {
+  handleOpenSidebar: () => void;
+};
+
+export default function Sidebar({ handleOpenSidebar }: SidebarProps) {
   return (
     <aside className="sidebar">
-      <div className="bg-overlay"></div>
+      <div className="bg-overlay" onClick={handleOpenSidebar}></div>
       <div className="sidbar-contents">
         <h2>Temp title 22</h2>
         <div>
