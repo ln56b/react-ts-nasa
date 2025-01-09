@@ -17,7 +17,6 @@ function App() {
   const NASA_API_KEY = import.meta.env.VITE_NASA_API_KEY;
 
   const [picture, setPicture] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
 
   function handleOpenSidebar() {
@@ -26,14 +25,22 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
+      const today = new Date().toISOString().split("T")[0];
+      const localKey = `nasa-picture-${today}`;
+      if (localStorage.getItem(localKey)) {
+        setPicture(JSON.parse(localStorage.getItem(localKey) as string));
+        return;
+      }
+
+      localStorage.removeItem(localKey);
+
       try {
         const response = await fetch(
           `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`
         );
         const apiRes = await response.json();
         setPicture(apiRes);
-        setLoading(false);
-        console.log(apiRes);
+        localStorage.setItem(localKey, JSON.stringify(apiRes));
       } catch (error) {
         console.error(error);
       }
